@@ -1,5 +1,3 @@
-import { act } from 'react';
-
 //selectors
 export const getAllTables = (state) => state.tables;
 export const getTableById = ({ tables }, tableId) =>
