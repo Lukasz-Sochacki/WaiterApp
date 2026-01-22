@@ -8,11 +8,13 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchTables } from './redux/tablesRedux';
 import EditTable from './components/pages/EditTable/EditTable';
+import { fetchTableStatus } from './redux/tablesStatusRedux';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => dispatch(fetchTables()), [dispatch]);
+  useEffect(() => dispatch(fetchTableStatus()), [dispatch]);
 
   return (
     <Container>

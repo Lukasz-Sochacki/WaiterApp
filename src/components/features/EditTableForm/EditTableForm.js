@@ -21,7 +21,7 @@ const EditTableForm = () => {
     <TableForm
       id={tableData.id}
       action={handleSubmit}
-      actionText='Update table'
+      actionText='Update'
       peopleAmount={tableData.peopleAmount}
       maxPeopleAmount={tableData.maxPeopleAmount}
       status={tableData.status}

@@ -5,8 +5,13 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const tables = useSelector(getAllTables);
-  console.log(tables.length);
-  if (tables.length === 0) return <Spinner />;
+
+  if (tables.length === 0)
+    return (
+      <div className='d-flex justify-content-center align-items-center'>
+        <Spinner />
+      </div>
+    );
 
   return (
     <>
