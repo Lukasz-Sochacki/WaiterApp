@@ -13,7 +13,7 @@ const TableForm = ({ action, actionText, ...props }) => {
   const statusData = useSelector(getAllTableStatus);
 
   const [peopleAmount, setPeopleAmount] = useState(
-    ['Cleaning', 'Free'].includes(props.status) ? 0 : props.peopleAmount,
+    ['Cleaning', 'Free'].includes(statusData) ? 0 : props.peopleAmount,
   );
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(
     props.maxPeopleAmount || '',
