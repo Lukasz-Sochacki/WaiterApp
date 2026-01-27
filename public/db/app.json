@@ -2,14 +2,14 @@
   "tables": [
     {
       "id": "1",
-      "status": "Busy",
-      "peopleAmount": "1",
-      "maxPeopleAmount": "10",
-      "bill": "2"
+      "status": "Free",
+      "peopleAmount": 0,
+      "maxPeopleAmount": "3",
+      "bill": "33"
     },
     {
       "id": "2",
-      "status": "Free",
+      "status": "Cleaning",
       "peopleAmount": "1",
       "maxPeopleAmount": 3,
       "bill": ""
@@ -19,14 +19,14 @@
       "status": "Busy",
       "peopleAmount": 2,
       "maxPeopleAmount": 3,
-      "bill": 45
+      "bill": 0
     },
     {
       "id": "4",
-      "status": "Cleaning",
+      "status": "Busy",
       "peopleAmount": 0,
-      "maxPeopleAmount": 3,
-      "bill": 0
+      "maxPeopleAmount": "0",
+      "bill": "1"
     }
   ],
   "status": [

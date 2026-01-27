@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TableForm from '../TableForm/TableForm';
 import { getTableById } from '../../../redux/tablesRedux';
 import { editTables } from '../../../redux/tablesRedux';
+import PropTypes from 'prop-types';
 
 const EditTableForm = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,13 @@ const EditTableForm = () => {
       bill={tableData.bill}
     />
   );
+};
+
+EditTableForm.propTypes = {
+  peopleAmount: PropTypes.number.isRequired,
+  maxPeopleAmount: PropTypes.number.isRequired,
+  status: PropTypes.string.isRequired,
+  bill: PropTypes.number.isRequired,
 };
 
 export default EditTableForm;

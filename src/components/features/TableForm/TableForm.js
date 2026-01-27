@@ -7,11 +7,14 @@ import { getAllTableStatus } from '../../../redux/tablesStatusRedux';
 import { useForm } from 'react-hook-form';
 import { editTablesRequest } from '../../../redux/tablesRedux';
 import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 const TableForm = ({ action, actionText, ...props }) => {
   const statusData = useSelector(getAllTableStatus);
 
-  const [peopleAmount, setPeopleAmount] = useState(props.peopleAmount || '');
+  const [peopleAmount, setPeopleAmount] = useState(
+    ['Cleaning', 'Free'].includes(props.status) ? 0 : props.peopleAmount,
+  );
   const [maxPeopleAmount, setMaxPeopleAmount] = useState(
     props.maxPeopleAmount || '',
   );
@@ -21,6 +24,12 @@ const TableForm = ({ action, actionText, ...props }) => {
 
   const { id } = useParams();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (['Cleaning', 'Free'].includes(status)) {
+      setPeopleAmount(0);
+    }
+  }, [status]);
 
   const handleSubmit = () => {
     setStatusError(!status);
@@ -139,7 +148,11 @@ const TableForm = ({ action, actionText, ...props }) => {
                 </Form.Label>
                 <Col sm='2'>
                   <Form.Control
-                    {...register('bill', { required: true, minLength: 1 })}
+                    {...register('bill', {
+                      required: true,
+                      minLength: 1,
+                      value: 0,
+                    })}
                     value={status === 'Busy' ? bill : 0}
                     onChange={(event) => setBill(event.target.value)}
                     type='number'
