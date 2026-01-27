@@ -1,9 +1,13 @@
 import { useSelector } from 'react-redux';
-import { getAllTables } from '../../../redux/tablesRedux';
-import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { getAllTables, getTableById } from '../../../redux/tablesRedux';
+import { Card, Col, Container, Row, Spinner, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { removeTable } from '../../../redux/tablesRedux';
+import { useDispatch } from 'react-redux';
+import { removeTableRequest } from '../../../redux/tablesRedux';
 
 const Home = () => {
+  const dispatch = useDispatch();
   const tables = useSelector(getAllTables);
 
   if (tables.length === 0)
@@ -38,6 +42,14 @@ const Home = () => {
                     >
                       Show more
                     </Link>
+                    <Button
+                      id={table.id}
+                      variant='danger'
+                      className='ms-4'
+                      onClick={() => dispatch(removeTableRequest(table.id))}
+                    >
+                      Remove
+                    </Button>
                   </Col>
                 </Row>
               </Card.Body>
