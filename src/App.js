@@ -9,6 +9,7 @@ import { useEffect } from 'react';
 import { fetchTables } from './redux/tablesRedux';
 import EditTable from './components/pages/EditTable/EditTable';
 import { fetchTableStatus } from './redux/tablesStatusRedux';
+import AddTable from './components/pages/AddTable/AddTable';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/table/edit/:id' element={<EditTable />} />
+        <Route path='/table/add' element={<AddTable />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />

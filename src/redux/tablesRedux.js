@@ -1,4 +1,5 @@
 import { API_URL } from '../config';
+import shortid from 'shortid';
 
 //selectors
 export const getAllTables = (state) => state.tables;
@@ -10,6 +11,7 @@ const createActionName = (actionName) => `app/tables/${actionName}`;
 const UPDATE_TABLE = createActionName('UPDATE_TABLE');
 const EDIT_TABLE = createActionName('EDIT_TABLE');
 const REMOVE_TABLE = createActionName('REMOVE_TABLE');
+const ADD_TABLE = createActionName('ADD_TABLE');
 
 //action creators
 
@@ -17,6 +19,10 @@ export const updateTables = (payload) => ({ type: UPDATE_TABLE, payload });
 export const editTables = (payload) => ({ type: EDIT_TABLE, payload });
 export const removeTable = (payload) => ({
   type: REMOVE_TABLE,
+  payload,
+});
+export const addTable = (payload) => ({
+  type: ADD_TABLE,
   payload,
 });
 
@@ -57,6 +63,23 @@ export const removeTableRequest = (removedTable) => {
   };
 };
 
+export const addTableRequest = (addedTable) => {
+  return (dispatch) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(addedTable),
+    };
+    fetch(API_URL + '/tables', options)
+      .then((res) => res.json())
+      .then((tables) => {
+        dispatch(addTable(tables));
+      });
+  };
+};
+
 const tablesReducer = (statePart = [], action) => {
   switch (action.type) {
     case UPDATE_TABLE:
@@ -69,6 +92,8 @@ const tablesReducer = (statePart = [], action) => {
       );
     case REMOVE_TABLE:
       return statePart.filter((table) => table.id !== action.payload);
+    case ADD_TABLE:
+      return [...statePart, { ...action.payload, id: shortid() }];
     default:
       return statePart;
   }

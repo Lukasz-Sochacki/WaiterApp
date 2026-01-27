@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
-import { getAllTables, getTableById } from '../../../redux/tablesRedux';
+import { getAllTables } from '../../../redux/tablesRedux';
 import { Card, Col, Container, Row, Spinner, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { removeTable } from '../../../redux/tablesRedux';
 import { useDispatch } from 'react-redux';
 import { removeTableRequest } from '../../../redux/tablesRedux';
 

@@ -2,6 +2,7 @@ import { NavLink } from 'react-bootstrap';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -17,9 +18,15 @@ const NavBar = () => {
             Waiter.app
           </Navbar.Brand>
           <Nav className='d-inline-flex'>
-            <Nav.Link className='text-light px-3' as={NavLink} to='/'>
+            <Link className='text-light px-3 text-decoration-none' to='/'>
               Home
-            </Nav.Link>
+            </Link>
+            <Link
+              className='text-light px-3 text-decoration-none'
+              to='/table/add'
+            >
+              Add table
+            </Link>
           </Nav>
         </Container>
       </Navbar>
